@@ -43,7 +43,6 @@ class LoginApIView(APIView):
         else:
             data = {
                 "message": "Invalid User Credentials",
-                "token": ""
                 }
             serializer = MessageSerializer(data)
             return Response(serializer.data, status=status.HTTP_403_FORBIDDEN)
@@ -72,7 +71,6 @@ class RegisterUsersAPIView(APIView):
             serializer.save()
             data = {
                 'message': "User successfully registered",
-                'token': ''
                 }
             serializer = MessageSerializer(data)
             return Response(serializer.data, status=status.HTTP_200_OK)
