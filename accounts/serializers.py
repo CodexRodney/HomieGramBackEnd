@@ -31,6 +31,9 @@ class AccountSerializer(serializers.ModelSerializer):
         validated_data["password"] = instance.password
         return super().update(instance, validated_data)
 
-class MessageSerializer(serializers.Serializer):
+class MessageTokenSerializer(serializers.Serializer):
     message = serializers.CharField(max_length=100)
     token = serializers.CharField(max_length=100)
+
+class MessageSerializer(serializers.Serializer):
+    message = serializers.CharField(max_length=100)
