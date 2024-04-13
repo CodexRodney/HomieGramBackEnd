@@ -12,4 +12,4 @@ class HouseComments(models.Model):
     comment = models.TextField()
     nested = models.BooleanField(default=False) # true if comment is nested
     # holds the id in which the comment is nested on
-    nested_id = models.CharField(max_length=100)
+    nested_id = models.CharField(max_length=100,default="", blank=True)

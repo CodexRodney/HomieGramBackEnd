@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .serializers import AccountSerializer, MessageSerializer
 from knox.models import AuthToken
 from rest_framework.views import APIView
@@ -21,7 +21,8 @@ class LoginApIView(APIView):
         """
         Handles loging out of the user
         """
-        pass
+        logout(request)
+        return Response({"message": "logged out succesfully."}, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         """
@@ -30,6 +31,7 @@ class LoginApIView(APIView):
         
         email = request.data.get("email")
         password = request.data.get("password")
+        print(email, password)
         user = authenticate(username=email, password=password)
 
         # if user exists
@@ -75,3 +77,5 @@ class RegisterUsersAPIView(APIView):
             serializer = MessageSerializer(data)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
