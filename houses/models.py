@@ -22,7 +22,14 @@ class Houses(models.Model):
     rating = models.PositiveSmallIntegerField(default=0, null=False, blank=False)
     description = models.TextField()
     location = models.CharField(default="", max_length=50)
+    # image = models.ImageField(upload_to='house_images/')
     # TODO implement ratings from teenants and non teenants
+
+
+
+
+
+
 
 class CareTaker(models.Model):
     """

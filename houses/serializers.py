@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CareTaker, Houses, LandLords, Teenants
+from .models import CareTaker,  Houses, LandLords,  Teenants
 
 
 class CareTakersSerializer(serializers.ModelSerializer):
@@ -12,6 +12,9 @@ class HousesSerializers(serializers.ModelSerializer):
         model = Houses
         fields = ['name', 'rent_amount', 'description', 'rating',
                   'description', 'location']
+
+
+    
 
 class LandLordsSerializer(serializers.ModelSerializer):
     class Meta:

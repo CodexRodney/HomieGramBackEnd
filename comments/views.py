@@ -1,14 +1,22 @@
+from tokenize import Comment
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from comments.models import HouseComments
 from .serializers import CommentsSerializers
 from accounts.serializers import MessageSerializer
 
 # Create your views here.
 class CommentsApi(APIView):
     def get(self, request, *args, **kwargs):
-        pass
+        house_id = request.query_params.get("house_id")
+        print(house_id)
+        comments = HouseComments.objects.filter(house_id = house_id)
+        serialzer = CommentsSerializers(comments, many=True)
+        return Response(serialzer.data, status=status.HTTP_200_OK)
+
 
     def post(self, request, *args, **kwargs):
         """
