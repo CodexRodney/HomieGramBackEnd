@@ -17,12 +17,7 @@ class CommentsApi(APIView):
         comments = HouseComments.objects.filter(house_id = house_id)
         serialzer = CommentsSerializers(comments, many=True)
         return Response(serialzer.data, status=status.HTTP_200_OK)
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> origin/master
-
+    
     def post(self, request, *args, **kwargs):
         """
         Used to post a comment about houses
