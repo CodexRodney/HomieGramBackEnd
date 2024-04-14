@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Create your models here.
@@ -19,11 +20,12 @@ class Houses(models.Model):
                                       decimal_places=2, max_digits=10)
     landlord_id = models.ForeignKey(LandLords, on_delete=models.CASCADE,
                                      null=True, blank=False)
-    rating = models.PositiveSmallIntegerField(default=0, null=False, blank=False)
+    rating = models.PositiveSmallIntegerField(default=0, null=False, blank=False, )
     description = models.TextField()
     location = models.CharField(default="", max_length=50)
     # image = models.ImageField(upload_to='house_images/')
     # TODO implement ratings from teenants and non teenants
+    #validators=[MinValueValidator(0), MaxValueValidator(5)]
 
 
 

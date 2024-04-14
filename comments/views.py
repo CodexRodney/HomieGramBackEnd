@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from comments.models import HouseComments
 from .serializers import CommentsSerializers
 from accounts.serializers import MessageSerializer
+from .models import HouseComments
 
 # Create your views here.
 class CommentsApi(APIView):
@@ -16,7 +17,11 @@ class CommentsApi(APIView):
         comments = HouseComments.objects.filter(house_id = house_id)
         serialzer = CommentsSerializers(comments, many=True)
         return Response(serialzer.data, status=status.HTTP_200_OK)
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/master
 
     def post(self, request, *args, **kwargs):
         """
@@ -42,8 +47,8 @@ class CommentsApi(APIView):
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
         
         # appending nested id and nested to data
-        data["nested"] = request.data.get("nested")
-        data["nested_id"] = request.data.get("nested_id")
+        data["nested"] = request.data.get("nested", False)
+        data["nested_id"] = request.data.get("nested_id", "")
 
         serializer = CommentsSerializers(data=data)
         if serializer.is_valid():
