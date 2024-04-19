@@ -7,15 +7,6 @@ class CareTakersSerializer(serializers.ModelSerializer):
         model = CareTaker
         fields = ['user_id', 'house_id']
 
-class HousesSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Houses
-        fields = ['name', 'rent_amount', 'description', 'rating',
-                  'description', 'location']
-
-
-    
-
 class LandLordsSerializer(serializers.ModelSerializer):
     class Meta:
         model = LandLords
@@ -25,3 +16,8 @@ class TeenantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teenants
         fields = ['user_id', 'house_id']
+
+class HousesSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Houses
+        fields = ["name", "rent_amount", "rating", "description", "location", "image"]

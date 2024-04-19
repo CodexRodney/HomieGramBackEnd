@@ -13,9 +13,9 @@ from .models import HouseComments
 class CommentsApi(APIView):
     def get(self, request, *args, **kwargs):
         house_id = request.query_params.get("house_id")
-        print(house_id)
         comments = HouseComments.objects.filter(house_id = house_id)
         serialzer = CommentsSerializers(comments, many=True)
+        print(serialzer.data)
         return Response(serialzer.data, status=status.HTTP_200_OK)
     
     def post(self, request, *args, **kwargs):

@@ -23,13 +23,9 @@ class Houses(models.Model):
     rating = models.PositiveSmallIntegerField(default=0, null=False, blank=False, )
     description = models.TextField()
     location = models.CharField(default="", max_length=50)
-    # image = models.ImageField(upload_to='house_images/')
+    image = models.ImageField(upload_to='house_images/', null=True, blank=True)
     # TODO implement ratings from teenants and non teenants
     #validators=[MinValueValidator(0), MaxValueValidator(5)]
-
-
-
-
 
 
 

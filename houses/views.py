@@ -17,7 +17,7 @@ class HouseAPIView(APIView):
         Used to get a house by id
         """
         house_id = request.data.get("house_id")
-        house = Houses.objects.filter(id=house_id)
+        house = Houses.objects.get(id=house_id)
 
         # sent house id doesn't exist
         if not house:
