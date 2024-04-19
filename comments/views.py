@@ -1,6 +1,6 @@
 from tokenize import Comment
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -54,3 +54,15 @@ class CommentsApi(APIView):
             serializer = MessageSerializer(data)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CommentDetailsApi(generics.DestroyAPIView):
+    queryset = HouseComments.objects.all()
+    def delete(self, request, *args, **kwargs):
+        try:
+            Comment = self.get_object()
+            Comment.delete()
+            return Response({"message": "comment deleted succesfully,"}, status=status.HTTP_204_NO_CONTENT)
+        except HouseComments.DoesNotExist:
+            return Response({"message": "comment does not excist"}, status=status.HTTP_404_NOT_FOUND)
+        
