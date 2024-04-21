@@ -11,6 +11,9 @@ class LandLords(models.Model):
     user_id = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
     num_houses = models.IntegerField(default=0)
 
+    def __str__(self) -> str:
+        return self.user_id.get_full_name()
+
 class Houses(models.Model):
     """
     Will Hold Information about the House
@@ -24,8 +27,15 @@ class Houses(models.Model):
     description = models.TextField()
     location = models.CharField(default="", max_length=50)
     image = models.ImageField(upload_to='house_images/', null=True, blank=True)
+    image_1 = models.ImageField(upload_to='house_images/', null=True, blank=True)
+    image_2 = models.ImageField(upload_to='house_images/', null=True, blank=True)
+    image_3 = models.ImageField(upload_to='house_images/', null=True, blank=True)
     # TODO implement ratings from teenants and non teenants
-    #validators=[MinValueValidator(0), MaxValueValidator(5)]
+    #validators=[MinValueValidator(0), MaxValueValidator(5)
+
+    def __str__(self) -> str:
+        return self.name
+
 
 
 
@@ -36,9 +46,15 @@ class CareTaker(models.Model):
     user_id = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
     house_id = models.ForeignKey(Houses, null=True, on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return self.user_id.get_full_name()
+
 class Teenants(models.Model):
     """
     Stores Information about Teenants
     """
     user_id = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
     house_id = models.ForeignKey(Houses, null=True, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.user_id.get_full_name()

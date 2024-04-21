@@ -20,4 +20,4 @@ class TeenantsSerializer(serializers.ModelSerializer):
 class HousesSerializers(serializers.ModelSerializer):
     class Meta:
         model = Houses
-        fields = ["name", "rent_amount", "rating", "description", "location", "image"]
+        fields = ["name", "rent_amount", "rating", "description", "location", "image", "image_1", "image_2", "image_3"]
