@@ -39,3 +39,9 @@ class HouseAPIView(APIView):
     
 class GetHouseAPIView(RetrieveAPIView):
     pass
+
+
+class SearchApiView(RetrieveAPIView):
+    lookup_field = "name"
+    queryset = Houses.objects.all()
+    serializer_class = HousesSerializers
