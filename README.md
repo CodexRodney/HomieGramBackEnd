@@ -1,4 +1,4 @@
-#HomieGram Backend
+###HomieGram Backend
 
 homiegram is a platform that can be used by university students and landlords to get and rent better and accountable housing, 
 this will esasen and streamline most of the processes making it easier for all parties and maximizing their interactions.
