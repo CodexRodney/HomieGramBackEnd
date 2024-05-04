@@ -72,7 +72,7 @@ class RegisterUsersAPIView(APIView):
         if serializer.is_valid():
             serializer.save()
             data = {
-                'message': "User successfully registered",
+                'message': "User Successfully registered",
                 }
             serializer = MessageSerializer(data)
             return Response(serializer.data, status=status.HTTP_200_OK)
